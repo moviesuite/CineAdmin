@@ -2,7 +2,7 @@
 require_once("header.php"); 
 require_once("funciones.php");
 $xc = conectar();
-$sql="SELECT * FROM dbcine.perfil";
+$sql="SELECT * FROM dbcine.peliculas;";
 $res=mysqli_query($xc,$sql);
 
 desconectar($xc);
@@ -32,11 +32,14 @@ desconectar($xc);
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Nombre</th>
                                             <th>Duración</th>
                                             <th>Fecha de Estreno</th>
                                             <th>Formato</th>
                                             <th># Vistos</th>
+                                            <th>Acción</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,9 +49,17 @@ desconectar($xc);
   <?php
     while ($row=mysqli_fetch_array($res))
     {
+
+        
       echo"<tr> <td>";
+        echo $row['id_Peli'];
+      echo"</td>";
+
+      echo"<td>";
         echo $row['nombre_Peli'];
       echo"</td>";
+
+
       echo"<td>";
         echo $row['duracion_Peli'];
       echo"</td>";
@@ -61,13 +72,14 @@ desconectar($xc);
        echo"<td>";
         echo $row['vistos_Peli'];
       echo"</td>";
-      ?>
-      <button class="btn btn-primary"><i class="fa fa-edit "></i> Edit</button>
-    <?php 
+      
+
+      echo"<td>"; 
+        echo "<a href='agregarpelicula.php?id=$row[id_Peli]'>Editar</a>";     
             echo"</td>";
-     echo"<td>"; ?>
-      <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button>
-    <?php 
+     echo"<td>"; 
+        echo "<a href='eliminarpelicula.php?id=$row[id_Peli]'>Eliminar</a>";     
+    
             echo"</td>";
        }
      ?>
@@ -110,7 +122,9 @@ desconectar($xc);
          <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
     
-   
+      
+</body>
+</html>
 
 
 
