@@ -1,12 +1,11 @@
-<?php require_once("header.php");//crear
+<?php //crear
 require_once("funciones.php");
 $accion=leerParam("accion","");
 $id_Peli=leerParam("id_Peli","");
 $nombre_Peli=leerParam("nombre_Peli","");
 $duracion_Peli=leerParam("duracion_Peli","");
 $estreno_Peli=leerParam("estreno_Peli","");
-$Director_id_Director=("Director_id_Director","");
-$vistos_Peli=("vistos_Peli","");
+
 
 $xc = conectar();
 
